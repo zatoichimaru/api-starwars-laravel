@@ -16,8 +16,16 @@ class GuzzleHttpRequest
 
     protected function get($url)
     {
-        $response = $this->client->request('GET', $url);
+        $promise = $this->client->getAsync($url)->then(
+            function ($response) {
+                return $response->getBody();
+            }, function ($exception) {
+                Log::error($e->getMessage());
+            }
+        );
 
-        return json_decode( $response->getBody()->getContents(), true );
+        $response = $promise->wait();
+
+        return json_decode( $response->getContents(), true ) ?: [];
     }
 }

@@ -36,36 +36,36 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        @if (!$peopleArray['results'])
+                    <div class="col-md-12"> 
+                        @empty($filmArray)
                             <p>Nenhum Filme encontrado.</p>
                         @else
-                            @foreach ($peopleArray['results'] as $peopleValue )
+                            @foreach ($filmArray['results'] as $filmValue )
                                 <div class="card" style="width: 18rem;">
                                     <img src="https://www.blog.xmundo.net/wp-content/uploads/2012/05/Star_Wars_Logo.svg_-200x200.png" class="card-img-top" alt="Star Wars">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $peopleValue['title'] }}</h5>
+                                        <h5 class="card-title">{{ $filmValue['title'] }}</h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <p><strong>Diretor</strong></p>
-                                            {{ $peopleValue['director'] }}
+                                            {{ $filmValue['director'] }}
                                         </li>
                                         <li class="list-group-item">
                                             <p><strong>Produtor</strong></p>
-                                            {{ $peopleValue['producer'] }}
+                                            {{ $filmValue['producer'] }}
                                         </li>
                                         <li class="list-group-item">
                                             <p><strong>Lançado</strong></p>
-                                            {{ $peopleValue['release_date'] }}
+                                            {{ $filmValue['release_date'] }}
                                         </li>
                                     </ul>
                                     <div class="card-body">
-                                        <a class="btn btn-info" href="/filmes/{{ preg_replace('/[^0-9]/', '', $peopleValue['url']) }}" role="button">Mais Informações</a>
+                                        <a class="btn btn-info" href="/filmes/{{ preg_replace('/[^0-9]/', '', $filmValue['url']) }}" role="button">Mais Informações</a>
                                     </div>
                                 </div>
                             @endforeach
-                        @endif
+                        @endempty
                     </div>
                 </div>
 

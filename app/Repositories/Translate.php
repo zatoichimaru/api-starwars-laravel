@@ -4,10 +4,10 @@ namespace App\Repositories;
 
 class Translate
 {
-    private $translateName = [
-        'people' => 
+    private $translateArray = [
+        'personagem' => 
         [
-            'pt' => 
+            'pt-br' => 
             [
                 'Name',
                 'Altura',
@@ -19,9 +19,9 @@ class Translate
             ]
 
         ],
-        'planets' => 
+        'planetas' => 
         [
-            'pt' => 
+            'pt-br' => 
             [
                 'Name',
                 'Clima',
@@ -30,9 +30,9 @@ class Translate
                 'População',
             ]
         ],
-        'starships' => 
+        'naves' => 
         [
-            'pt' => 
+            'pt-br' => 
             [
                 'Name',
                 'Modelo',
@@ -41,9 +41,9 @@ class Translate
                 'Classe',
             ]
         ],
-        'vehicles' => 
+        'veiculos' => 
         [
-            'pt' => 
+            'pt-br' => 
             [
                 'Name',
                 'Modelo',
@@ -52,9 +52,9 @@ class Translate
                 'Classe',
             ]
         ],
-        'species' => 
+        'especies' => 
         [
-            'pt' => 
+            'pt-br' => 
             [
                 'Name',
                 'Classificação',
@@ -65,8 +65,8 @@ class Translate
         ],
     ];
 
-    public function language($type)
+    public function language($type, $language)
     {
-        return $translateName[$type];
+        return $this->translateArray[$type][$language];
     }
 }

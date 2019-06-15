@@ -20,26 +20,26 @@
                         <a class="btn btn-secondary btnBack" href="#">Voltar</a>
                     </div>
                 </div>
-                @empty($peopleArray)
+                @empty($informationFilmArray)
                     <p>Nenhum Filme encontrado.</p>
                 @else
                     <div class="card" style="width: 18rem;">
                         <img src="https://www.blog.xmundo.net/wp-content/uploads/2012/05/Star_Wars_Logo.svg_-200x200.png" class="card-img-top" alt="Star Wars">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $peopleArray['title'] }}</h5>
+                            <h5 class="card-title">{{ $informationFilmArray['title'] }}</h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <p><strong>Diretor</strong></p>
-                                {{ $peopleArray['director'] }}
+                                {{ $informationFilmArray['director'] }}
                             </li>
                             <li class="list-group-item">
                                 <p><strong>Produtor</strong></p>
-                                {{ $peopleArray['producer'] }}
+                                {{ $informationFilmArray['producer'] }}
                             </li>
                             <li class="list-group-item">
                                 <p><strong>Lançado</strong></p>
-                                {{ $peopleArray['release_date'] }}
+                                {{ $informationFilmArray['release_date'] }}
                             </li>
                         </ul>
                     </div>
@@ -48,41 +48,38 @@
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/filmes/{{ preg_replace('/[^0-9]/', '', $peopleArray['url']) }}/personagem" id="people">Personagens</a>
+                                    <a class="nav-link active" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/personagem" id="people">Personagens</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $peopleArray['url']) }}/planetas">Planetas</a>
+                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/planetas">Planetas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $peopleArray['url']) }}/especies">Espécies</a>
+                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/especies">Espécies</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $peopleArray['url']) }}/naves">Naves</a>
+                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/naves">Naves</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $peopleArray['url']) }}/veiculos">Veículos</a>
+                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/veiculos">Veículos</a>
                                 </li>
                             </ul>
 
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                       @foreach ($peopleArray['data'] as $people )
-                                            @foreach ($people as $peopleIndex => $peopleValue )
-                                               <th scope="col">{{ $peopleIndex }}</th>
-                                            @endforeach
+                                        @foreach ($informationFilmArray['translate'] as $translateValue)
+                                            <th scope="col">{{ $translateValue }}</th>
                                         @endforeach
-                                   
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   <!-- @foreach ($peopleArray['data'] as $people)
+                                    @foreach ($informationFilmArray['data'] as $dataArray)
                                         <tr>
-                                            @foreach ($people as $peopleValue)
-                                                <td>{{ $peopleValue }}</td>
+                                            @foreach ($dataArray as $dataValue)
+                                                <td>{{ $dataValue }}</td>
                                             @endforeach
                                         </tr>
-                                    @endforeach --->
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

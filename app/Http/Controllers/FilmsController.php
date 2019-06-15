@@ -20,29 +20,33 @@ class FilmsController extends Controller
 
     public function index()
     {
-        $peopleArray = $this->films->all();
+        $filmArray = $this->films->all();
 
-        return view('films.index', compact('peopleArray'));
+        return view('films.index', compact('filmArray'));
     }
 
     public function findById($id)
     {
-        $peopleArray = $this->films->findById($id);
+        $informationFilmArray = $this->films->findById($id);
 
-        return view('films.show', compact('peopleArray'));
+        $informationFilmArray['translate'] = $this->translate->language('personagem','pt-br');
+
+        return view('films.show', compact('informationFilmArray'));
     }
 
     public function find($id, $type)
     {
-        $peopleArray = $this->films->find($id, $type);
+        $informationFilmArray = $this->films->find($id, $type);
 
-        return view('films.show', compact('peopleArray'));
+        $informationFilmArray['translate'] = $this->translate->language($type, 'pt-br');
+
+        return view('films.show', compact('informationFilmArray'));
     }
 
     public function findByTitle($title)
     {
-        $peopleArray = $this->films->findByTitle($title);
+        $informationFilmArray = $this->films->findByTitle($title);
 
-        return view('films.index', compact('peopleArray'));
+        return view('films.index', compact('informationFilmArray'));
     }
 }
