@@ -1,0 +1,51 @@
+body{ }
+
+#searchFilm{
+    border:1px solid #ccc;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.card{
+    text-align: center;
+    float:left;
+    margin:5px;
+    height: 630px;
+}
+
+.list-group-item p{
+    margin:2px;
+}
+
+.nav-tabs{
+    font-size: 14px;
+}
+
+.table{
+    font-size: 12px;
+}
+
+.container h1{
+    text-align:center;
+}
+
+.spaceNavBar{
+    margin:20px 0px 10px 0px;
+    text-align:right;
+    background-color:#eee;
+    border-radius: 5px;
+}
+
+.spaceNavBar a{
+    color: #ccc;
+    font-size:15px;
+    margin:5px;
+}
+
+@media (min-width: 576px) { }
+
+@media (min-width: 768px) { }
+
+@media (min-width: 992px) { }
+
+@media (min-width: 1200px) {  }
