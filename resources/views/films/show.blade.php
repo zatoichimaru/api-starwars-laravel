@@ -46,6 +46,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
+
+                        <p>{{ $informationFilmArray['opening_crawl'] }}</p>
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link @if ($informationFilmArray['actionPage'] == 'personagem') active @endif" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/personagem" id="people">Personagens</a>

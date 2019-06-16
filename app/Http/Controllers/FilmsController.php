@@ -31,6 +31,7 @@ class FilmsController extends Controller
         $informationFilmArray = $this->films->findById($id);
 
         $informationFilmArray['translate'] = $this->translate->language('personagem','pt-br');
+        $informationFilmArray['actionPage'] = 'personagem';
 
         return view('films.show', compact('informationFilmArray'));
     }
@@ -40,7 +41,8 @@ class FilmsController extends Controller
         $informationFilmArray = $this->films->find($id, $type);
 
         $informationFilmArray['translate'] = $this->translate->language($type, 'pt-br');
-        
+        $informationFilmArray['actionPage'] = $type;
+ 
         if( empty( $informationFilmArray['translate'] ) ){
             
             return response()->view('errors.error404');
