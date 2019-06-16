@@ -14,7 +14,7 @@
     <body>
         <main>
             <div class="container">
-                <h1>FILMS START WARS</h1>
+                <h1>FILMS STAR WARS</h1>
                 <div class="row spaceNavBar">
                     <div class="col-md-12">
                         <a class="btn btn-secondary btnBack" href="#">Voltar</a>
@@ -39,7 +39,7 @@
                             </li>
                             <li class="list-group-item">
                                 <p><strong>Lançado</strong></p>
-                                {{ $informationFilmArray['release_date'] }}
+                                {{ date( 'd/m/Y' , strtotime( $informationFilmArray['release_date'] ) ) }}
                             </li>
                         </ul>
                     </div>
@@ -48,23 +48,23 @@
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/personagem" id="people">Personagens</a>
+                                    <a class="nav-link @if ($informationFilmArray['actionPage'] == 'personagem') active @endif" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/personagem" id="people">Personagens</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/planetas">Planetas</a>
+                                    <a class="nav-link @if ($informationFilmArray['actionPage'] == 'planetas') active @endif" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/planetas">Planetas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/especies">Espécies</a>
+                                    <a class="nav-link @if ($informationFilmArray['actionPage'] == 'especies') active @endif" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/especies">Espécies</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/naves">Naves</a>
+                                    <a class="nav-link @if ($informationFilmArray['actionPage'] == 'naves') active @endif" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/naves">Naves</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/veiculos">Veículos</a>
+                                    <a class="nav-link @if ($informationFilmArray['actionPage'] == 'veiculos') active @endif" href="/filmes/{{ preg_replace('/[^0-9]/', '', $informationFilmArray['url']) }}/veiculos">Veículos</a>
                                 </li>
                             </ul>
-
-                            <table class="table table-striped">
+                            
+                            <table class="table table-hover table-striped">
                                 <thead>
                                     <tr>
                                         @foreach ($informationFilmArray['translate'] as $translateValue)
@@ -75,8 +75,10 @@
                                 <tbody>
                                     @foreach ($informationFilmArray['data'] as $dataArray)
                                         <tr>
-                                            @foreach ($dataArray as $dataValue)
-                                                <td>{{ $dataValue }}</td>
+                                            @foreach ($dataArray as $dataIndex => $dataValue)
+                                                @if ($loop->index < count($informationFilmArray['translate']))
+                                                    <td>{{ $dataValue }}</td>
+                                                @endif
                                             @endforeach
                                         </tr>
                                     @endforeach

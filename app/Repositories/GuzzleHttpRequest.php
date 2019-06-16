@@ -20,12 +20,12 @@ class GuzzleHttpRequest
             function ($response) {
                 return $response->getBody();
             }, function ($exception) {
-                Log::error($e->getMessage());
+                return [];
             }
         );
 
         $response = $promise->wait();
 
-        return json_decode( $response->getContents(), true ) ?: [];
+        return !$response ? [] : json_decode( $response->getContents(), true );
     }
 }

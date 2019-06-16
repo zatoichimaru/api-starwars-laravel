@@ -17,13 +17,18 @@
     <body>
         <main>
             <div class="container">
-                <h1>FILMS START WARS</h1>
+                <h1>FILMS STAR WARS</h1>
 
-                <div class="row spaceNavBar">
-                    <div class="col-md-12">
-                        <a class="btn btn-secondary btnBack" href="#">Voltar</a>
+                    <div class="row spaceNavBar">
+                        <div class="col-md-12">
+                            @isset($filmArray['search'])
+                                <a class="btn btn-secondary btnBack" href="#">Voltar</a>
+                            @else
+                                <a class="btn" href="#">Bem Vindo</a>
+                            @endisset
+                        </div>
                     </div>
-                </div>
+               
 
                 <div class="row">
                     <div class="col-md-9">
@@ -35,6 +40,7 @@
                         </form>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-12"> 
                         @empty($filmArray)
@@ -57,7 +63,7 @@
                                         </li>
                                         <li class="list-group-item">
                                             <p><strong>Lançado</strong></p>
-                                            {{ $filmValue['release_date'] }}
+                                            {{ date( 'd/m/Y' , strtotime( $filmValue['release_date'] ) ) }}
                                         </li>
                                     </ul>
                                     <div class="card-body">

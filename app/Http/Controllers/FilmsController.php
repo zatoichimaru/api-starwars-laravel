@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\Films;
 use App\Repositories\Translate;
 
+
 use Illuminate\Http\Request;
 
 class FilmsController extends Controller
@@ -39,14 +40,24 @@ class FilmsController extends Controller
         $informationFilmArray = $this->films->find($id, $type);
 
         $informationFilmArray['translate'] = $this->translate->language($type, 'pt-br');
+        
+        if( empty( $informationFilmArray['translate'] ) ){
+            
+            return response()->view('errors.error404');
 
+        }
+
+        $informationFilmArray['actionPage'] = $type;
+        
         return view('films.show', compact('informationFilmArray'));
     }
 
     public function findByTitle($title)
     {
-        $informationFilmArray = $this->films->findByTitle($title);
+        $filmArray = $this->films->findByTitle($title);
 
-        return view('films.index', compact('informationFilmArray'));
+        $filmArray['search'] = true;
+
+        return view('films.index', compact('filmArray'));
     }
 }

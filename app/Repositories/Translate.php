@@ -9,12 +9,13 @@ class Translate
         [
             'pt-br' => 
             [
-                'Name',
+                'Nome',
                 'Altura',
                 'Peso',
                 'Cabelo',
                 'Pele',
                 'Olhos',
+                'Nascimento',
                 'Gênero',
             ]
 
@@ -23,7 +24,7 @@ class Translate
         [
             'pt-br' => 
             [
-                'Name',
+                'Nome',
                 'Clima',
                 'Gravidade',
                 'Água',
@@ -34,7 +35,7 @@ class Translate
         [
             'pt-br' => 
             [
-                'Name',
+                'Nome',
                 'Modelo',
                 'Fabricante',
                 'Tripulação',
@@ -45,7 +46,7 @@ class Translate
         [
             'pt-br' => 
             [
-                'Name',
+                'Nome',
                 'Modelo',
                 'Fabricante',
                 'Tripulação',
@@ -56,7 +57,7 @@ class Translate
         [
             'pt-br' => 
             [
-                'Name',
+                'Nome',
                 'Classificação',
                 'Desiginação',
                 'Tempo de Vida',
@@ -67,6 +68,6 @@ class Translate
 
     public function language($type, $language)
     {
-        return $this->translateArray[$type][$language];
+        return !array_key_exists( $type, $this->translateArray ) ? [] : $this->translateArray[$type][$language];
     }
 }

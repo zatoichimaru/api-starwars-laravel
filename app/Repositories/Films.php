@@ -72,8 +72,6 @@ class Films extends GuzzleHttpRequest
 
         }
 
-        dd($filmsArray);
-
         return $filmsArray;
     }
 
@@ -89,12 +87,12 @@ class Films extends GuzzleHttpRequest
 
         $indexValue = array_search( $title, array_column( $filmsArray['results'], 'title' ) );
         
-        $filmsArray['results'] = array( $filmsArray['results'][$indexValue] );
+        $filmsArray['results'] = [ $filmsArray['results'][$indexValue] ];
 
         return $filmsArray;
     }
 
-    private function findByInformation( $type )
+    public function findByInformation( $type )
     {
         $filmsArray = $this->all();
 
@@ -106,7 +104,7 @@ class Films extends GuzzleHttpRequest
 
         $indexValue = array_search( $title, array_column( $filmsArray['results'], 'title' ) );
         
-        $filmsArray['results'] = array( $filmsArray['results'][$indexValue] );
+        $filmsArray['results'] = [ $filmsArray['results'][$indexValue] ];
         
         return $filmsArray;
     }
